@@ -1,0 +1,23 @@
+ /* .image-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.image-grid img {
+  max-width: 100%;
+  border-radius: 15px;
+}
+
+
+.image-container { 
+  flex: 1 0 25%;
+  box-sizing: border-box; 
+  border: 1px solid #ddd; 
+  padding: 10px;
+  text-align: center;
+}
+
+
+.image-container:hover .zoom-image {
+  filter: sepia(20%) brightness(110%);
+} */

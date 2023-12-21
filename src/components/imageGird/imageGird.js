@@ -1,23 +1,22 @@
-import React, { useState, useEffect } from 'react';
+// ImageGrid.js
+import React, { useState,useEffect } from 'react';
 import { useSpring, animated } from 'react-spring';
-import SearchBar from './searchBar';
+import apiService from '../../services/apiServices.js';
+import SearchBar from '../searchBar/searchBar';
+import Modal from '../modal/modalImage';
 import './imageGrid.css';
 
 const ImageGrid = () => {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const handleSearch = async (query) => {
     try {
       setLoading(true);
-      const response = await fetch(`http://172.16.24.69:8888/api/v1/meme/index?q=${query}`);
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-
-      const result = await response.json();
-      setFilteredData(result.Data);
+      const response = await apiService.get(`/api/v1/meme/index?q=${query}`);
+      setFilteredData(response.data.Data);
     } catch (error) {
       console.error('Error fetching data:', error);
     } finally {
@@ -29,33 +28,32 @@ const ImageGrid = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await fetch('http://172.16.24.69:8888/api/v1/meme/index');
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-
-        const result = await response.json();
-        setData(result.Data);
+        const response = await apiService.get(`/api/v1/meme/index`);
+        setData(response.data.Data);
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
         setLoading(false);
       }
     };
-
     fetchData();
   }, []);
 
-  const zoomIn = useSpring({
-    // Your animation configuration goes here
-  });
+  const zoomIn = useSpring({});
+
+  const openModal = (image) => {
+    setSelectedImage(image);
+  };
+
+  const closeModal = () => {
+    setSelectedImage(null);
+  };
 
   return (
     <div>
-      <SearchBar onSearch={handleSearch} />
       <div className="image-grid">
         {(filteredData.length > 0 ? filteredData : data).map((image) => (
-          <div className={`image-container`} key={image?.ID}>
+          <div className={`image-container`} key={image?.ID} onClick={() => openModal(image)}>
             <animated.img
               className={`zoom-image`}
               src={'https://drive.google.com/uc?id=' + image?.DriveId} 
@@ -63,12 +61,15 @@ const ImageGrid = () => {
               style={zoomIn}
             />
             <div className="text-container">
-              <p className="animated-text">Your text runs from left to right</p>
+              <p className="animated-text">{image?.Name}</p>
             </div>
           </div>
         ))}
         {loading && <p>Loading...</p>}
       </div>
+      <Modal isOpen={!!selectedImage} onClose={closeModal} title={selectedImage?.Name}>
+        <img src={'https://drive.google.com/uc?id=' + selectedImage?.DriveId} alt={selectedImage?.Name} />
+      </Modal>
     </div>
   );
 };

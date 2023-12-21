@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './searchBar.css'; // Import the CSS file for styling
+import './searchBar.css';
 
 const SearchBar = ({ onSearch }) => {
   const [query, setQuery] = useState('');
@@ -10,7 +10,7 @@ const SearchBar = ({ onSearch }) => {
   };
 
   const handleKeyDown = (e) => {
-    if (e.key == 'Enter') {
+    if (e.key === 'Enter') {
       console.log(e.key)
       onSearch(query);
     }
