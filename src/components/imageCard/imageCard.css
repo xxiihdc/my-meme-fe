@@ -1,0 +1,81 @@
+.card-pin:hover .overlay {
+  opacity: 0.5;
+  border: 5px solid #f3f3f3;
+  -webkit-transition: ease 0.2s;
+  transition: ease 0.2s;
+  background-color: #000000;
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
+}
+
+.more {
+  color: white;
+  font-size: 14px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  text-transform: uppercase;
+  -webkit-transform: translate(-20%, -20%);
+  transform: translate(-20%, -20%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.card-pin:hover .card-title {
+  color: #ffffff;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.card-pin:hover .more a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.card-pin:hover .download a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.card-img-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1.25rem;
+}
+
+/* line 122, node_modules/bootstrap/scss/_card.scss */
+.card-img {
+  width: 100%;
+  border-radius: calc(0.25rem - 1px);
+}
+
+/* line 128, node_modules/bootstrap/scss/_card.scss */
+.card-img-top {
+  width: 100%;
+  border-top-left-radius: calc(0.25rem - 1px);
+  border-top-right-radius: calc(0.25rem - 1px);
+}
+
+/* line 133, node_modules/bootstrap/scss/_card.scss */
+.card-img-bottom {
+  width: 100%;
+  border-bottom-right-radius: calc(0.25rem - 1px);
+  border-bottom-left-radius: calc(0.25rem - 1px);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  background-color: #008cba;
+}

@@ -1,23 +1,18 @@
- /* .image-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-.image-grid img {
-  max-width: 100%;
-  border-radius: 15px;
+.card-columns .card {
+  margin-bottom: 0.75rem;
 }
 
-
-.image-container { 
-  flex: 1 0 25%;
-  box-sizing: border-box; 
-  border: 1px solid #ddd; 
-  padding: 10px;
-  text-align: center;
+@media (min-width: 576px) {
+  .card-columns {
+    -webkit-column-count: 5;
+    column-count: 5;
+    -webkit-column-gap: 1.25rem;
+    column-gap: 1.25rem;
+    orphans: 1;
+    widows: 1;
+  }
+  .card-columns .card {
+    display: inline-block;
+    width: 100%;
+  }
 }
-
-
-.image-container:hover .zoom-image {
-  filter: sepia(20%) brightness(110%);
-} */

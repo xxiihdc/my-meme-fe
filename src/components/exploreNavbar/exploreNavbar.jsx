@@ -7,7 +7,7 @@ const ExploreNavbar = () => {
 
   return (
     <div className="container mb-4">
-      <h1 className="font-weight-bold title">Explore</h1>
+      <h1 className="font-weight-bold title">Explore Hihihi</h1>
       <div className="row">
         <nav className="navbar navbar-expand-lg navbar-light bg-white pl-2 pr-2">
           <button
